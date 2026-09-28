@@ -22,6 +22,7 @@ To use a different engine installation:
 ```
 
 Build artifacts under `Binaries/`, `Intermediate/`, `Saved/` and `DerivedDataCache/` are disposable. Do not delete `Content/`, `Source/`, `Scripts/`, `Config/`, `Build/Windows/Application.ico` or the `.uproject`. Keep a packaged `Windows/` directory intact when distributing it.
+The private [baseline 0.3 GitHub release](https://github.com/waylorr/KG-Unreal-Prototype-0.3/releases/tag/baseline-0.3) includes a ZIP of the current modular Windows package without PDB debug symbols. Git tracks the source and reference media, not compiled binaries or local user presets.
 
 ## Verification
 

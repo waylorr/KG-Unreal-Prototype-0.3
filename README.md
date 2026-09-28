@@ -29,6 +29,6 @@ Unreal's `Binaries/`, `Intermediate/`, `Saved/` and `DerivedDataCache/` are gene
 
 Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before changing component behavior or UI Kit inheritance, and [docs/BUILD.md](docs/BUILD.md) for the installed toolchain, build command and packaging. [docs/STATUS.md](docs/STATUS.md) records what exists, what has been verified and what remains undecided. The original art direction is indexed in [references/REFERENCE_INDEX.md](references/REFERENCE_INDEX.md).
 
-`AGENTS.md` contains short workspace rules for coding agents. There is no Git repository, remote or commit history in this folder yet; `.gitignore` is prepared for a future GitHub repository. No external plugins or purchases are required by the runtime.
+`AGENTS.md` contains short workspace rules for coding agents. The private [GitHub repository](https://github.com/waylorr/KG-Unreal-Prototype-0.3) tracks editable source, documentation and references. Generated Unreal folders and local packaged builds are excluded from Git; the current standalone package is attached to the [baseline 0.3 release](https://github.com/waylorr/KG-Unreal-Prototype-0.3/releases/tag/baseline-0.3). No external plugins or purchases are required by the runtime.
 
 No project-wide redistribution license has been granted. The supplied references remain the owner's source material; third-party font provenance and licenses are recorded in `Unreal/KoaliticWorkbench/Content/Interface/ASSET_NOTES.md`.
