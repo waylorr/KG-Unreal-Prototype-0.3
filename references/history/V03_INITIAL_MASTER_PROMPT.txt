@@ -1,0 +1,73 @@
+# Master implementation prompt — KOALITIC UI Component Workbench
+
+## Your role and mission
+
+Act as a senior Unreal Engine UI engineer, technical artist, motion designer, and product implementer. Build and deliver a new, working Unreal application on this Windows computer. You own implementation and testing; the user supplies art direction and reviews the running product.
+
+The immediate mission is to prove that Unreal can deliver a spectacular, highly editable sci-fi UI component system. Visual quality is the primary product requirement. The application should feel like a polished futuristic game interface, with the precision and layered motion associated with premium shooter menus. References to Call of Duty, Cyberpunk, and Fortnite describe craft and responsiveness, not a request to copy proprietary assets or combine incompatible styles.
+
+Create a focused visual proof before building the larger platform. The first deliverable is one convincing Workbench screen and one reusable Player Profile component. It must look designed, animate beautifully, and respond to real controls. A generic editor surrounding a placeholder rectangle is a failed delivery.
+
+Speak to the user in Spanish. Implement initial UI labels in English to match the supplied designs. Do not ask the user to edit code, Blueprints, widgets, or engine settings.
+
+## Delivery experience
+
+The user wants to open the result like a finished game: a standalone application window, without Unreal Editor chrome. Build and package a Windows application and provide an easy launch shortcut. An installer is unnecessary. Keep source and the Unreal project available for subsequent AI modifications; the user does not need to operate them.
+
+Create the project in this workspace's `Unreal/` directory and package into `Builds/`. Give it a distinct project identity and an isolated writable data namespace, such as `KOALITIC/WorkbenchV03`. Never overwrite or adopt the failed application's data, settings, builds, or source by default.
+
+The original Nightfall implementation is a read-only technical precedent for a successful app delivery. Use the technical note to inspect it when helpful. This is a fresh project, not an in-place migration.
+
+## Think and inspect before implementation — then implement
+
+1. Read the active product specification and reference index. Inspect all supplied images and the actual motion videos. If a video cannot be played, extract representative frames and inspect timing through available tools; describe any inspection limits honestly.
+2. Inspect installed Unreal versions, compiler/build tools, GPU, and relevant available plugins. Verify capabilities against official Epic documentation for the installed version when needed.
+3. Briefly explain the chosen visual approach and implementation strategy, including how text, portraits, progress, states, and effects will remain editable. Proceed with implementation in the same task; do not stop for approval of an abstract plan.
+4. Build the actual first component early and inspect it in motion. Expand only enough Workbench controls to demonstrate that it is reusable and editable.
+5. Package, launch, test, capture evidence, and fix visible defects. Deliver the working app, then stop for the user's visual review.
+
+Ask only for genuinely blocking missing information. Make reversible implementation decisions yourself. Do not impose a fictional 24-minute deadline or guarantee an aesthetic multiplier; demonstrate improvement through comparison with the references.
+
+## Art direction and first screen
+
+Use `01_WORKBENCH_PRIMARY.png` for the main Library / Preview / Inspector composition. Preserve hierarchy, spacing, dark layered surfaces, precise cyan details, and the central importance of the component. Supporting architecture images describe later capabilities, not additional screens to build now.
+
+Use `02_PLAYER_PROFILE_GOLDEN.png` for component proportions, portrait treatment, angular frame, typography, and progress-bar composition. Preserve the visual identity while making motion substantially more refined than the supplied Pixi.js examples.
+
+Build separate editable layers: frame, glass/background, portrait, masks, labels, level, XP fill/track, highlights, and effect overlays. Do not use a flattened screenshot as the live component. Reference screenshots may be shown separately for comparison.
+
+Focus motion on purposeful choreography: frame construction, masked portrait reveal, brief controlled text decoding, staged label arrival, smooth XP catch-up, restrained ambient light, and a distinct exit sequence. Build at least two visibly different entrance presets and two exit presets; entry and exit selections must be independent. Avoid random effects on every element, illegible glitch, constant flashes, or identical fades disguised as different presets.
+
+The strongest visual proof must work over a simple static dark background. Video playback, a 3D world, gameplay, and a full HUD are not needed in this milestone. Do not let an attractive background compensate for a weak component.
+
+## Genuine runtime editability
+
+Provide a focused Inspector for player name, portrait selection from supplied/sample assets, level, XP, maximum XP, visual accent, and key motion/FX parameters. Text and bars must remain live UI. Surface only controls that actually work.
+
+Provide independent entrance, exit, and ambient selection/settings. Expose meaningful controls such as duration/speed, stagger, reveal direction where applicable, glow strength, glitch intensity/frequency, and ambient strength. A parameter must visibly affect its relevant effect and use sensible limits. Explain incompatible combinations in the UI rather than silently ignoring settings.
+
+Support expanded and compact layouts, hover feedback, disabled appearance, visible/hidden transitions, and pinning that prevents automatic collapse. Compact must be a designed layout, not simply a scaled-down expanded card. Separate layout, interaction, visibility, and playback state so combinations have coherent behavior.
+
+Allow manual preview of enter/exit, play/pause/reset, and explicit time seek. Use one controllable presentation clock for component animation so pausing and seeking do not leave glitch, particles, or XP effects running on an unrelated wall clock. Seed procedural variation when needed for repeatable evaluation. This is a component animation preview, not an episode timeline.
+
+Include a synthetic `Add 50 XP` / `Add 100 XP` demonstration. A single preview event updates the simulated data, displays an XP notification, and animates the bar. Handle crossing a level threshold coherently with a clearly documented demo rule. Keep this separate from future authoritative progression. Replaying a visual animation must not award XP again.
+
+Save and reload the small set of current profile settings and named local motion presets so the user can keep a preferred result. Do not build the complete shared preset database, asset browser, or review platform yet. Preview time and temporary test rewards must not silently overwrite saved presentation settings.
+
+## Architecture and technology judgment
+
+Use a reusable runtime component, with the Workbench as a host that edits its configuration. Keep component definition, presentation configuration, preview data, state, and animation evaluation distinct. Future episode playback should be able to supply data and time without rendering the Workbench itself.
+
+Choose C++, UMG, Slate, UI materials, or a combination based on quality and maintainability. The original Nightfall also used Slate; toolkit choice alone does not determine visual quality. Avoid both a simplistic primitive-only treatment and unnecessary infrastructure.
+
+Research built-in capabilities and suitable external effect libraries if they could improve the result. Verify engine compatibility, license, deployment implications, runtime UI integration, clipping, transparency, and performance. Do not assume scene bloom or Niagara particles automatically work inside screen-space UI. Prove the selected rendering path. Prefer a small reliable dependency set; do not purchase or install third-party plugins without explicit user authorization.
+
+Use transparent PNG assets where appropriate. Rebuild editable text, bars, masks, and highlights separately. SVG or layered PSD can be useful source inputs, but do not assume they import as editable runtime components automatically. When only a flattened reference exists, reconstruct the necessary layers or identify exactly what source art would improve the result. Use clearly identified temporary portrait assets if needed without blocking the proof.
+
+## Completion and review
+
+Apply the acceptance checklist in `02_PRODUCT_AND_ACCEPTANCE.md`. Report what you actually tested, including machine/resolution and any performance limitations. Capture the default screen, expanded/compact states, and a short motion demonstration where tooling allows.
+
+Deliver the exact executable and shortcut paths, a short Spanish explanation of how to test the component, and any remaining limitations. Ask for visual review of composition, motion, and editability. Do not continue into full asset management, Core, additional major components, or Episode Studio before that review.
+
+The deliverable is a running application with evidence, not a plan, a mockup, a web replacement, or a promise that effects will be added later.

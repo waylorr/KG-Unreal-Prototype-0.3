@@ -1,0 +1,35 @@
+# Effects and composition update
+
+## Scope
+Player Profile remains the only major component. This update improves the authoring workflow and the real native preview. It does not add Photo Rank, a production progression service, a timeline, arbitrary geometry authoring, or an asset importer.
+
+## Authoring workflow
+- UI Kit: Motion FX contains Entrance and Exit. Ambient FX, Reaction FX, Appearance and Progress Bar are separate resources.
+- Selecting a saved resource auditions a draft. The current component assignment does not change.
+- Save preset writes the resource. Saving an already linked resource updates followers while preserving local overrides. It does not implicitly save the component.
+- Save as creates a named draft; edit its name and save. Apply assigns a saved draft. Save component persists assignments and local overrides.
+- Drafts survive switching categories during the session. Reload restores disk state.
+- Undo/redo covers parameter edits, toggles, preset audition and assignment, not external saved-file history, XP test events or content fields.
+- Click a numerical value to type it. Sliders show their supported range. Discrete choices use buttons, not continuous sliders.
+
+## Composition and ranges
+36 registered settings. Ambient modules can coexist: glass reflection, particles, text interference, whole-profile glitch, perimeter flow and scan. On/off controls preserve the previous nonzero value during the current session. Module parameters live in the named ambient resource. More controls pages expose advanced fields without shrinking the preview.
+
+Speed -3..5 reverses loops below zero. Ambient intensity 0..3, glass 0..4, particles 0..3, glow 0..4, glitch 0..3, displacement 0..80 logical pixels, 2..16 bands, burst duration .02.. .30 seconds. Entrance/exit duration .15..6 seconds and independent easing power 1..6. Bounds are meaningful numerical domains, not arbitrary unlimited input; negative glow has no useful rendering meaning.
+
+Five entrance algorithms: Frame construct, Vector deploy, Segment assembly, Signal decode, Cascade deploy. Five exit algorithms: Shutter retract, Collapse to line, Fragment disperse, Signal dropout, Cascade retract. The broader researched effect catalog is a roadmap, not an implemented inventory.
+
+## Render implementation
+The live profile remains editable native geometry, text, image and a generated Unreal UI material. Whole-profile glitch and segmented motion use a clipped strip compositor that redraws all these layers together, including portrait, frame and labels, with controlled displacement and a cyan channel echo. This iteration does not use Retainer Box or Niagara. This is a deliberate native implementation, not an imported screenshot. The cost grows with the number of bands; extreme settings require measured performance review.
+
+Glass shader source: Scripts/ProfileGlass.hlsl. Rebuild authoring through Scripts/CreateInterfaceMaterial.py using Unreal's supported material APIs. The shader exposes clock, signed speed, particle size/drift, density, reflection, scan and appearance variant.
+
+## Data and reusable parts
+ProgressPart.h is a presentation-only normalized progress renderer. It owns no player XP or level rules. PlayerProfile.h supplies its value and owns the synthetic reward evaluation. Future Photo Rank or other components can reuse the renderer or subscribe to a future shared data source without duplicating reward assignment. That future data source is not implemented here.
+
+Track and fill derive from one canonical angular polygon. The filled polygon is clipped by value, including an editable tip angle, and highlights use the same polygon. Height, inset, radiance, sweep speed and tip angle have their own shared category. Edit XP bar / Solo isolates the part in the same preview.
+
+Appearance variants Angular V1 and Precision V2 use the same semantic layers and motion configuration. Edge ornaments can be disabled independently. Saving or assigning appearance does not modify entrance/exit parameters. These are authored visual variants, not a freeform geometry/layout editor. New arbitrary frame designs still require source authoring. Thumbnail panels are layout studies; the central preview is the full material/effects reference.
+
+## Build
+Run Scripts/Build.ps1 with Unreal 5.8.3 installed at E:/UnrealEngine/UE_5.8. Source and generated material remain under this project. Packaged output stays in Builds/WorkbenchV03/Windows. No external plugins installed.

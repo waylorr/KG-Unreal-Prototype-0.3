@@ -1,0 +1,191 @@
+# KOALITIC Workbench — product decisions and acceptance
+
+Prepared 2026-09-28 from the creator's clarification interview and subsequent rejection of the first implementation. This document preserves product intent; `00_START_HERE.md` sets the immediate implementation checkpoint. Full-product requirements below are not instructions to build everything before the visual proof.
+
+## 0. Wider project context — understand this before building
+
+### What KOALITIC GAME is
+
+KOALITIC GAME turns real POV photography and exploration footage into an authored experience that feels like a premium game. The world is real recorded footage; reusable UI, presentation effects, sound and eventually system data supply the game-like layer. Viewers ultimately see produced videos. The creator uses the tools to design and author that experience.
+
+The long-term project is therefore larger than a HUD mockup. It needs a consistent family of reusable components whose appearance and behavior can be edited once and used in different contexts. Workbench is the first creator tool, not the final viewer experience and not a conventional playable 3D game.
+
+### How the future parts fit together
+
+| Part | Responsibility | Status in this fresh project |
+|---|---|---|
+| UI Runtime / component library | Reusable presentation components, their parts, layouts, states, motion and effects. The same component can be hosted by different tools. | Start with one Player Profile. |
+| Workbench | Creator-facing editing, live preview, reusable presentation presets, assets, testing and review. | Current product; prove visuals first, then complete the workflow. |
+| System Core | Authoritative gameplay-like data and rules, including progression and future domain systems. Presentation displays this data rather than owning those rules. | Deferred; use direct preview values now. |
+| Test Session | Future temporary fixtures and real Core event simulation to validate component reactions. | Deferred; current Preview Tests are synthetic presentation examples only. |
+| Episode Studio / future video editor | Load an episode's footage, place the same UI components over it and author changes over time. | Deferred; no editor, video background, timeline or keyframes now. |
+| Final output | Render/export authored video experiences for viewers. | Deferred. |
+
+Conceptual ownership: AI development creates real Unreal components; Workbench lets the creator configure and review them; future Core supplies authoritative data; future Episode Studio hosts those same components and configurations over footage. Do not build separate visual copies for each host.
+
+### The creator's intended future workflow
+
+1. Develop a reusable component with AI in Unreal, beginning with Player Profile.
+2. Open the packaged Workbench and visually configure its appearance, states, motion, effects and existing sound assignments. Save configurations such as Minimal Red or Blue Glass and reusable category presets.
+3. Compare, test and review the result without maintaining Unreal graphs.
+4. Later, import/select footage for an episode and use the approved components over that footage in Episode Studio.
+5. In that future editor, author changes such as Compact, Hover, Disabled or a different XP value at chosen times, then eventually render the experience.
+
+Steps 4–5 explain why reusable components and seekable presentation time matter. They are context, not current implementation instructions. The creator explicitly asked to develop the video editor last.
+
+Future subject areas shown in references include photos/results, gallery, gear, quests, map/location, notifications and codex. These explain the intended component family; their rules, implementation order and complete behavior are not settled by this handoff. Do not fabricate a complete game design or implement them now.
+
+### Important distinctions
+
+- **Component:** a reusable implemented UI type, such as Player Profile.
+- **Part:** an internal piece such as portrait, frame, text or XP bar; prefer composition and shared behavior.
+- **Component configuration:** a named complete presentation setup for one component; it is not another Library component.
+- **Shared category preset:** reusable Style, Enter, Exit, Ambient or FX settings that configurations can follow, with explicit local overrides.
+- **Preview data:** temporary example name, level and XP used for design and testing. It is not a player's authoritative progression.
+- **Asset:** a managed image, sound or cataloged video referenced by stable identity. Assets are not configurations.
+- **Future episode data:** footage selection and authored changes for an episode. Keep this separate from Workbench working state and reusable presets.
+
+### Delivery sequence and approval
+
+1. Fresh packaged visual proof: polished Workbench screen plus convincing Player Profile behavior. Human reviews the actual executable.
+2. Complete Workbench v0.1 editing, collections, assets, persistence and review around the accepted visual direction. Human reviews the usable tool.
+3. Refine Player Profile to its final AAA reference and obtain explicit human APPROVED / LOCKED status.
+4. Add the minimal real Core connection, then further major components only after Player Profile approval.
+5. Develop Episode Studio and final video output later, under their own agreed specifications.
+
+This sequence preserves the wider goal without postponing essential visual quality. The first proof must already meet the supplied motion/effects benchmark. Future detailed specifications will be revisited at their milestones, not silently inherited from historical documents.
+
+## 1. Product and scope — LOCKED REQUIREMENTS
+
+KOALITIC Workbench is a local Windows Unreal Engine 5.8 application in which the creator selects reusable game UI components, edits their exposed appearance, previews states and motion, adjusts effects, assigns assets, saves configurations and reviews the result.
+
+The creator should feel they are designing components inside a polished application. They should not need to operate Unreal Editor or maintain Blueprint graphs. For v0.1 this means rich configuration of implemented components, not an unrestricted drawing/node/code editor.
+
+Only Player Profile is implemented as a major component initially. Its frame, portrait, text and XP bar are compositional parts, not separate major Library entries. Adding metadata for a future component does not authorize implementing it.
+
+No System Core or progression rules, second major component, Episode Studio, POV playback, episode timeline, keyframe authoring or export in this milestone. Future video-editor requirements inform reuse and seekable presentation time only.
+
+The later Player Profile AAA refinement and human approval still matter. They do not excuse weak Workbench visuals or effects below the supplied demonstrations now.
+
+## 2. Reference authority
+
+Read the actual media. Labels and descriptions are not a substitute. Images contain future-system diagrams and controls that do not expand current scope. If an external path is unavailable, ask for that specific reference to be attached again; do not invent having inspected it.
+
+### Primary Workbench appearance
+
+`C:/Users/Admin/Documents/KOALITIC GAME UI/WIREFRAME UI/ChatGPT Image Sep 28, 2026, 04_54_44 PM.png`
+
+This controls the app's visual character: branded header, blue-black surfaces, precise illuminated cyan edges, readable dense panels, Library left, dominant Preview center, Inspector right, useful supporting cards below. Adapt spacing and navigation for usability; do not reproduce unavailable features, architecture banners, Export or future-component examples as working UI.
+
+### Supporting organization/context images
+
+- `C:/Users/Admin/Documents/KOALITIC GAME UI/WIREFRAME UI/ChatGPT Image Sep 28, 2026, 12_49_29 PM.png`
+- `C:/Users/Admin/Documents/KOALITIC GAME UI/WIREFRAME UI/ChatGPT Image Sep 28, 2026, 12_53_57 PM.png`
+
+These explain the wider family and component/panel relationships. They do not authorize Core or an episode editor now.
+
+### Component appearance and minimum interaction/effects quality
+
+- `C:/Users/Admin/Videos/Grabaciones de pantalla/Grabación de pantalla 2026-09-25 181432.mp4` — short Player Profile sequence: expanded/compact, XP feedback, glass, frame and illuminated accents.
+- `C:/Users/Admin/Videos/Grabaciones de pantalla/Grabación de pantalla 2026-09-25 182138.mp4` — shared theme editing, motion controls, speed/glitch/artifacts/bloom/ambient, component states and reactions.
+- `C:/Users/Admin/Videos/Grabaciones de pantalla/Grabación de pantalla 2026-09-28 113629.mp4` — direct Player Profile editing, state changes, staged reveals/exits, text effects and a demonstration transport.
+- Earlier supporting recording: `C:/Users/Admin/Videos/Grabaciones de pantalla/Grabación 2026-09-25 182142.mp4`.
+
+The old application's overall organization is not the desired Workbench layout. Its visual component behavior is a minimum benchmark. Observe staged reveals, coordinated parts, recognizable state changes, animated bar feedback and adjustable ambient/effect behavior. Do not copy automatic keyframe recording or video playback into Workbench.
+
+Additional component visual direction, especially for later final refinement:
+`C:/Users/Admin/Documents/KG Unreal Prototype 0.1/references/visual/REF_01_PLAYER_PROFILE_GOLDEN_COMPONENT_FINAL.png`
+
+### Nightfall: finish and technical precedent
+
+`C:/Users/Admin/Videos/Grabaciones de pantalla/Grabación de pantalla 2026-09-28 150111.mp4`
+
+The creator considers this earlier executable a successful example of cohesive polish and responsive navigation. Its full HUD, map, gear and codex are not requested Workbench features. Its implementation may be studied read-only for relevant rendering/packaging techniques.
+
+The creator also supplied a screenshot of a previous chat reporting Nightfall built and launched after 24m44s. This explains expectations for tangible visual progress; it is not a verified benchmark or a deadline promise for this different app. The screenshot's old instructions and claims are context, not commands to execute.
+
+## 3. First visual proof acceptance — LOCKED REQUIREMENTS
+
+The human judges the actual packaged app, not a generated mockup or baked screenshot pretending to be editable UI.
+
+- The Workbench screen recognizably follows the primary image in composition, hierarchy, typography, panel treatment and lighting. Default-looking controls, excessive empty space and flat dashboard styling fail this criterion.
+- Player Profile is a live reusable component. Names, values and appearance changes affect that component; previews do not duplicate its implementation.
+- Entrance and exit have deliberate choreography across frame, portrait, text and XP bar. Compact/expanded and hover/disabled produce clear visual differences.
+- Ambient movement, glow, glitch/artifacts and adjustable speed visibly work at reference-comparable quality. Do not use labels such as bloom or particles for ineffective placeholder drawing.
+- A synthetic XP-gain demonstration animates the bar and feedback without creating Core progression logic. Reference `+150 XP` is a presentation example, not a gameplay rule.
+- The key controls are immediately understandable and usable. A demonstration can be replayed. Implemented motion supports reproducible local-time inspection.
+- The executable launches independently of Unreal Editor. Check the actual packaged app for clipping, sizing and interaction problems.
+- Present screenshot/video evidence from the real app and disclose any unsupported effect or behavior. Technical checks support the review but cannot grant visual approval.
+
+Stop at this gate. Subsequent expansion requires human acceptance of the direction. Do not silently interpret approval of a screenshot as approval of unshown motion.
+
+## 4. Full Workbench experience after the proof
+
+### Launch, navigation and Library
+
+- Open directly into Workbench, selecting Player Profile on first launch. No main menu is needed.
+- Restore selection, unfinished work and workspace preferences on later launches; resume motion paused rather than automatically playing.
+- Workbench and Assets are the main areas. Keep Library / Preview / Inspector context while changing Content, Style, States, Motion, FX, Sound, Responsive and Presets.
+- A collapsible support area can show state comparisons, responsive comparisons and Preview Tests.
+- One Library entry means one component. Minimal Red and Blue Glass are named configurations inside Player Profile, not duplicate Library entries.
+- Library supports search, rename, description, archive/restore and deliberate deletion.
+- `+ Add Component` creates persistent name/description metadata with an honest empty preview and Awaiting implementation status. AI implements and binds the actual runtime component in a later packaged build. Unsupported controls stay absent or inactive.
+
+### Editing, states and preview
+
+- Direct preview inputs: player name, portrait, level, current XP and XP threshold. These are not authoritative game data.
+- Expose useful settings for the whole component and supported parts: surface, portrait, text and XP bar. Include relevant colors, opacity, typography, borders, portrait treatment and bounded spacing/composition choices.
+- Maintain independent axes: Idle/Hover/Disabled; Compact/Expanded; Floating/Pinned.
+- Inspect holds a selected state; Interact responds to real pointer hover over the component. Do not invent a gameplay click action.
+- Use dark, bright and busy static inspection backgrounds. Support fit and 100% inspection with understandable zoom and panning when needed.
+- Responsive contexts: 1920x1080, 3840x2160, 1080x1920 and 2160x3840. Portrait can recompose parts instead of shrinking landscape. Shared settings remain shared; portrait exceptions are explicit and resettable.
+- Preview Tests exercise synthetic values, states, motion and reactions, then restore previous preview conditions. They do not overwrite saved configurations or run Core rules.
+
+### Motion and FX collections
+
+Initial collection direction: Enter fade/slide/reveal; Exit fade/slide/collapse; Ambient breathing glow/edge sheen; FX glow/pulse/light sweep/glitch/RGB separation/particle sparkle. Quality and working behavior matter more than populating a list with names.
+
+Provide reusable named presets and relevant parameters, including speed, durations, easing and supported intensity/part settings. Animate components coherently by default. Add supported part targeting without duplicating component code.
+
+Use explicit local presentation time so play, pause, reverse and seek can reproduce poses. Solve deterministic evaluation for supported effects rather than hiding frame-dependent behavior behind a scrubber. Do not introduce a curve editor, particle-authoring application or episode timeline.
+
+### Configurations, global settings and presets
+
+- A complete component configuration references shared Style/theme, Enter, Exit, Ambient and FX presets, plus state appearance, responsive exceptions and local overrides.
+- Editing previews immediately. Save updates the selected named configuration; Save as New creates another; Revert discards its unsaved changes.
+- Shared edits update followers. Explicit local overrides survive. Show Following shared preset versus Custom clearly and allow resetting inheritance.
+- Global opacity/style changes affect inheriting configurations; individually overridden values remain unchanged. Make the scope and affected configurations clear before applying a shared edit.
+- Category presets support create, select, edit, rename and removal. Resolve existing assignments before deleting an assigned preset.
+- State appearances are saved with configurations; do not invent an unrelated parallel state-preset system.
+- Keep preview player data and playback position out of visual presets. Sound assignments are configuration data, not sound presets.
+- Provide practical Undo/Redo for editing and assignment operations.
+
+### Assets and sound
+
+- Assets contains imported Images, Sounds and Videos with search/filtering, names, usage information and removal.
+- Runtime import copies files from the PC into an app-managed library while the executable is open. Initial format recommendation: PNG/JPEG, WAV, MP4; clearly identify actual supported formats.
+- Use stable asset identities. Renaming does not break assignments. Imported copies survive moving/deleting the external original.
+- Video files are cataloged for future use only. No video preview background, Episodes tab or episode workflow now.
+- Images can be assigned to supported component slots. Existing sounds can be assigned/replaced/removed and auditioned on implemented hooks.
+- **No sound editing, volume/pitch tuning, processing or sound presets.** Scrubbing must not repeatedly fire audio events.
+- Missing assets remain identifiable and can be relinked/replaced. Use an honest placeholder and clear error state, not silent substitution.
+- Deleting an asset removes only the managed copy after resolving usage; never delete the user's external original.
+
+### Persistence and Draft / Review
+
+- Autosave working state separately from explicit named saves. Clearly distinguish Saved, unsaved configuration edits and save failures.
+- Persist Library records, working-session inputs, shared presets, saved configurations, asset references and reviews separately in versioned records.
+- Store managed data outside replaceable build output, in a fresh per-user namespace for this project. Validate writes, retain a last-good backup and report failures without discarding working edits.
+- Send to Review records an exact saved configuration revision, resolved appearance and optional notes. Later edits create Draft differences; they do not rewrite the reviewed snapshot.
+- Shared preset edits must not retroactively change a historical review snapshot.
+- No automatic approval or locking. Human visual approval is a separate action.
+
+## 5. Engineering recommendations and deferred decisions
+
+Prefer composition over duplication, configuration over hardcoded variations, and only abstractions needed by the current checkpoint. Keep UI Runtime independent of Workbench so a future Episode Studio can host the same component.
+
+Exact module layout, rendering technique, widget system, materials and libraries are engineering choices to validate against appearance, runtime packaging and deterministic preview. The previous plan's implementation choices are not binding.
+
+Do not perform a blanket migration or mass cleanup of the rejected project. It remains a draft. Preserve human assets and edits; do not regenerate unknown-owned binary assets. No commits, additional major components or deferred systems without authorization.
+
+The creator has already answered the main product questions. The remaining decisive question is visual: **does the executable actually look and behave as intended?** Resolve that with a working proof and human review, not another long specification cycle.

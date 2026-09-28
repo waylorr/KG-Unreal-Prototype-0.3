@@ -1,0 +1,31 @@
+# Abrir y probar KOALITIC Workbench
+
+Abre **Launch KOALITIC Workbench.lnk** en esta carpeta, o **KOALITIC Workbench 0.3.lnk** en el escritorio. Ambos abren la aplicación Windows; Unreal Editor no es necesario.
+
+Ejecutable: `Builds/WorkbenchV03/Windows/KoaliticWorkbench.exe`.
+
+## Qué probar
+1. En **Components**, alterna Expanded y Compact. El ambiente continúa. Replay enter y Preview exit vuelven al estado elegido al terminar.
+2. En **UI Kit > Motion FX**, selecciona Entrance o Exit. Prueba Segment assembly, Signal decode, Fragment disperse y Signal dropout con los botones bajo el preview. Cada dirección tiene duración y suavizado independientes.
+3. En **Ambient FX**, combina Glass reflection, partículas, interferencia de texto, glitch de todo el perfil, Perimeter flow y Holographic scan. **More controls** da acceso al resto de los parámetros. Los interruptores On/Off desactivan módulos individualmente.
+4. Haz clic sobre una cifra para escribirla. Loop speed admite valores de -3 a 5; un valor negativo invierte el movimiento. Las intensidades permiten superar el nivel normal. Los límites de cada control aparecen debajo.
+5. En **Appearance**, previsualiza Precision V2. Los adornos se controlan con Edge ornaments. Cambiar Appearance conserva la configuración de entrada y salida.
+6. En Components, **Edit XP bar / Solo** aísla la barra. Ajusta altura, margen interior, brillo, velocidad del reflejo y punta. Su preset está separado de los motions del perfil.
+7. **+150 XP** produce una sola recompensa y reacción. Near threshold prepara un cruce de nivel. Clear rewards restaura el dato base.
+
+## Guardar sin confundir ámbitos
+- Seleccionar un preset en UI Kit solo lo previsualiza: no cambia el vínculo del componente.
+- **Save preset** guarda el recurso. Si ya está vinculado, actualiza sus valores compartidos respetando las excepciones locales.
+- **Save as...** prepara otro nombre; edítalo y pulsa Save preset.
+- **Apply** vincula el preset guardado al componente, conservando sus excepciones locales.
+- **Save component** guarda los vínculos y ajustes locales. No guarda las recompensas sintéticas.
+- Un ajuste desde Components crea una excepción local; Reset vuelve al valor compartido.
+- Undo/Redo y Ctrl+Z/Ctrl+Y deshacen ajustes de efectos en memoria. No deshacen escrituras anteriores de archivos ni eventos de XP.
+
+Los borradores de UI Kit se conservan al cambiar de categoría durante la sesión. Para conservarlos al cerrar hay que guardarlos. La previsualización global muestra el preset sin las excepciones locales del componente.
+
+## Límites de esta entrega
+Hay un Player Profile implementado, dos variantes de marco y una barra reutilizable. El catálogo completo investigado, el editor libre de geometría, Photo Rank y el sistema de datos compartidos de producción quedan para futuras iteraciones. Las partículas actuales son procedurales; no se ha activado Niagara para esta interfaz ni instalado ningún plugin externo.
+
+Fuente editable: `Unreal/KoaliticWorkbench/`. Notas técnicas: `Unreal/KoaliticWorkbench/EFFECTS_AUTHORING.md`. Evidencia de esta revisión: `review/effects-final/` y `review/effects-live/`.
+

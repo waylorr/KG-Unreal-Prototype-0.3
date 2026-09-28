@@ -1,0 +1,93 @@
+# Product scope and acceptance
+
+## Priority and boundaries
+
+Milestone 1 validates visual quality and runtime editability in a real Unreal application. Quality comes before breadth. The active scope is the Workbench shell plus one real Player Profile. The following roadmap preserves the larger vision without making it a prerequisite for this proof.
+
+The user supplies art direction and reviews results. The implementing AI owns source, engine setup, technical assets, builds, testing, packaging, and launching. Human aesthetic approval cannot be inferred from a passing technical checklist.
+
+## Milestone 1 — required first delivery
+
+| Area | Required behavior | Verification |
+|---|---|---|
+| Launch | Packaged Windows application opens directly into the Workbench without editor chrome | Launch the packaged executable, not only Play in Editor; supply a working shortcut |
+| Workbench | Readable Library, central Preview, and Inspector based on the primary reference | Inspect at 1920×1080; check scaling at 3840×2160 where supported; record limitations |
+| Library | Player Profile is the sole implemented major component | Do not populate the library with fake working components or internal parts |
+| Player Profile | Layered angular frame, portrait, readable name/level, XP track/fill and value | Match golden reference proportions and design; verify text and bar are live |
+| Editing | Name, portrait selection, level, XP, threshold, accent and effect parameters update preview | Change each exposed value and verify its actual effect |
+| Motion | At least two distinct entrances and two distinct exits, chosen independently; ambient loop | Compare silhouettes, timing and choreography; avoid duplicate fades with different names |
+| FX | Working glow, brief glitch/artifacts, reveal and ambient controls | Set each parameter low/high, then disable it; verify legibility and clipping |
+| States | Expanded, compact, hover, disabled, visible/hidden, pinned behavior | Exercise combinations and rapid enter/exit/hover; no stuck or duplicated layers |
+| Preview clock | Play, pause, reset, explicit seek | Revisit the same timestamp and obtain the same presentation; pause freezes all presentation effects |
+| Connected preview | Add XP triggers one notification and one coherent bar update; demo level crossing | Replay the animation without awarding again; test small reward, threshold crossing and repeated input |
+| Minimal persistence | Current presentation settings and named local entrance/exit presets survive restart | Save distinct entry/exit settings, restart packaged app, reload and compare |
+| Separation | Synthetic rewards and playback time do not silently modify saved visual presets | Run tests and reload the saved configuration |
+| Reliability | No crashes, missing assets, unreadable overlays, dead active controls or obvious frame hitches | Exercise packaged app and inspect logs; fix observed failures |
+| Performance | Aim for smooth 60 fps on the user's machine; retain high-quality text/edges at supported resolutions | Report actual resolution, hardware and measured performance where available; never claim unmeasured 4K60 |
+
+All active controls must work. Hide deferred functions or label them unavailable; avoid decorative Save, Export, tabs, and menu actions that imply finished behavior.
+
+Use a small static background selector if useful for contrast testing. A complete theme editor, asset importer, generic component factory, production progression database, or timeline is not required now.
+
+### Required visual evidence
+
+Store verification in `review/`: default Workbench screenshot, expanded and compact profile screenshots, and a short motion recording if available. Include a concise validation note naming the build tested, actual checks, unresolved issues, and exact launch path. A screenshot alone does not verify animation. If recording is unavailable, state that and describe the live inspection performed.
+
+After delivery, ask the user to assess fidelity, visual finish, motion, and control feel. Fix that feedback before expanding scope. Do not mark the result "AAA approved" yourself.
+
+## Definitions that keep the system coherent
+
+- **Component definition:** a reusable implemented UI module, such as Player Profile.
+- **Internal part:** portrait, frame, label, progress bar, or effect layer inside a component.
+- **Configuration:** a named presentation setup for one component.
+- **Preset:** a reusable collection of settings in one category, such as Entrance or Exit.
+- **Preview data:** temporary values used to exercise a component without real progression.
+- **Asset:** an image, sound, or other managed media resource.
+- **Core data:** future authoritative player, inventory, XP and progression state.
+- **Episode data:** future footage, timed events, overrides, and output settings.
+
+Keep these concepts separate without building a large framework before the first proof. A configuration named Blue Glass is not a new component. A photo reward event is not an animation preset.
+
+## Milestone 2 — full Workbench, after visual review
+
+Extend the approved component foundation with:
+
+- Library search, component metadata, named configurations, rename, archive/restore and deliberate deletion. Adding an unimplemented component creates an honest definition placeholder, not an automatically invented working widget.
+- Editing of the whole component and selected internal parts. Support Inspect mode that holds a state and Interact mode that exercises real hover behavior.
+- Coherent state axes: Idle/Hover/Disabled; Compact/Expanded; Floating/Pinned; lifecycle visibility handled separately.
+- Independent Style, Entrance, Exit, Ambient and FX presets. Each component/configuration can follow shared presets or keep local overrides. Shared changes propagate to followers without destroying intentional overrides.
+- Save, Save As New, Revert and undo/redo. State appearance belongs within the configuration; avoid a redundant state-preset subsystem.
+- Responsive landscape and portrait previews: 1920×1080, 3840×2160, 1080×1920 and 2160×3840. Recompose portrait layouts with explicit overrides rather than squashing them.
+- Static dark, bright and busy preview backgrounds, fit/100%, zoom and pan. Synthetic tests restore earlier preview values when finished.
+- Managed asset imports for PNG/JPEG, WAV and MP4, with stable IDs, search, usage references and missing-file relinking. MP4 catalog support does not imply video editing. Copy imports into managed storage; deleting a managed copy must not delete the user's original source.
+- Sound support limited at this stage to assigning, replacing and previewing existing sounds. Do not build a sound synthesizer, processing suite, volume/pitch preset system, or sound library during milestone 1.
+- Versioned persistence, safe writes, backup/recovery and visible error handling. Separate working-state autosave, deliberate named saves and review snapshots; store writable data outside packaged build output.
+- Immutable review snapshots containing exact resolved settings and configuration revision. Later shared-preset changes must not change what was previously reviewed. Approval remains a human action.
+
+Refine the Player Profile to the user's accepted visual standard before creating other major components. The historical v0.2 specification contains additional future detail; use it as background only, subject to these active boundaries and current user direction.
+
+## Later milestones — preserve the vision, do not implement now
+
+### Connected component library and Core
+
+Introduce authoritative data and events only after the visual foundation is accepted. A photography reward can then update global XP, animate Player Profile, show photo/score/reward feedback, and add the photo to Gallery through one coherent event. Distinguish an actual reward from replaying its visual presentation.
+
+Expand with inventory/loadout, stamina, mission, location/map, radial menus, notification/photo cards, Gallery and Codex. Each needs its own suitable states, editable content, motion settings and reusable presets. The eventual left rail can expand on hover, stay pinned, or retain selected submodules such as stamina.
+
+### Future POV Episode Studio
+
+The background is externally edited real-world POV footage. This is an authoring application, not a playable 3D world or a replacement general video editor.
+
+Provide New/Open/Save Episode, imported footage, editable timed values/events, draggable keyframes and state changes, and consistent seeking. Manual interaction may be recorded as editable events. Episode starting data can be explicitly copied from a previous episode or configured independently; do not force global continuity.
+
+Future options include GPS route/map synchronization, optional 2D object tracking without real-world occlusion, configurable holds for menu interactions, photography events and stored images. Resolve timing semantics for video holds before implementation.
+
+Final export shows footage and the HUD, with authoring controls and the actual mouse cursor hidden. Preserve source audio and eventually offer separate source/HUD/music mix controls. This later mix requirement does not expand current Workbench sound scope.
+
+Target source workflows include 4K60 ProRes footage and later ProRes 422 HQ MOV / delivery MP4 outputs with suitable 4K, 1440p, 1080p and 720p, 30/60 fps or source-matched settings. Verify actual Windows codec, licensing, color management, frame accuracy and export support before promising these. Source-matched settings do not guarantee lossless output.
+
+## Out of scope for the first delivery
+
+No Episode Studio, timeline/keyframe editor, video decoding/export pipeline, tracking, GPS integration, live Core database, full inventory, store, full HUD, online accounts, marketplace, installer, or production asset-management platform.
+
+Do not let these future systems delay the first beautiful, editable, packaged component proof.

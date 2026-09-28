@@ -1,0 +1,38 @@
+# KOALITIC Workbench v0.3
+
+Fresh Unreal Engine 5.8.3 native Windows project. Milestone 1 only.
+
+## Runtime structure
+
+- `PlayerProfile.h`: reusable profile definition, data, presentation configuration, interaction state, presentation clock, synthetic reward history, pure evaluation and layered rendering. No dependency on the Workbench shell.
+- `WorkbenchCanvas.h`: native Slate drawing, vectors, gradients, typography, image layers and clipping. UI glow is explicitly composited in Slate; it does not rely on scene bloom or Niagara.
+- `Workbench.cpp`: runtime Workbench host, real input handling, local settings, independent motion presets, preview transport and packaged validation harness.
+- `WorkbenchGameMode.h`: attaches runtime interface to a game viewport. No editor UI is required by the packaged application.
+
+Eight individually visible layers: angular frame, glass, portrait/mask, player name, level, XP track/fill, edge lights and motion overlays. The portrait is sampled from supplied reference art. All text and geometry outside the portrait are live. Compact uses a separate horizontal composition with a smaller portrait, inline level and slim XP track.
+
+## Motion and time
+
+Frame construct uses directional masking. Vector deploy uses lateral travel, masked portrait and staged labels. Shutter retract removes the component directionally; collapse closes vertically. Entrance and exit are chosen separately, each with its own duration. Stagger controls relative layer arrival. Ambient edge pulse, light sweep, glitch, XP interpolation and notification lifetime derive only from the presentation clock.
+
+Play/pause, reset to time zero, manual enter/exit, and time seek are independent from profile data. `R` restarts presentation and clears synthetic rewards; resetting/seeking re-evaluates the existing event history without emitting new rewards.
+
+## Demo XP semantics
+
+Base data is editable. A reward appends one event containing clock time and amount. The evaluation computes current level and XP from the base plus the event history at the selected time. At the threshold the level increases by one, overflow carries, and the threshold stays fixed. This is a documented synthetic demonstration, not authoritative progression. New rewards after seeking remove future preview events. Clear rewards restores base values.
+
+## Local persistence
+
+`%LOCALAPPDATA%/KOALITIC/WorkbenchV03/Presentation.ini` stores the base profile and presentation. `MotionPresets.ini` stores named entry/exit settings; the name field selects which named preset to save/load. Synthetic events, notifications and playback time are never saved. No older application namespace is read.
+
+## Build and verification
+
+Run `Scripts/Build.ps1` in PowerShell. It builds the editor target needed for cooking, then uses UAT to build, cook, stage and archive the native Win64 application into `Builds/WorkbenchV03/Windows/`.
+
+Optional packaged `-WorkbenchVerify -Evidence="absolute folder"` runs explicit synthetic checks and captures rendered evidence in an isolated Verification settings namespace. `-QAControl` enables a local command inbox in the specified evidence directory for repeatable capture/seek; it is not enabled by the user shortcut. `F9` captures a screenshot. `F11` toggles fullscreen.
+
+No external plugins were installed. Runtime uses built-in Engine, Slate, SlateCore, ImageWrapper, RenderCore and RHI modules. Official API reference: https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/SlateCore/Rendering/FSlateDrawElement/MakeCustomVerts
+
+## Deliberate scope limits
+
+No episode editor, video export, production progression, asset import pipeline, additional component library, audio authoring or online service. Human aesthetic acceptance remains pending.

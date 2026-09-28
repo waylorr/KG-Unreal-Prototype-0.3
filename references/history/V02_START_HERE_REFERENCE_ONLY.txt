@@ -1,0 +1,75 @@
+# KOALITIC Workbench — Visual Proof First
+
+## Instructions for the new chat
+
+Read this file and `01_PRODUCT_AND_ACCEPTANCE.md` completely. These two files are the active handoff for a fresh Unreal project. Current user instructions override them. Do not import the previous project's instructions or implementation plan as additional authority.
+
+Speak English. The creator may answer in Spanish. Act on the brief; do not restart a lengthy product interview. Ask only questions whose answers materially affect the result and cannot be resolved from the supplied references.
+
+`01_PRODUCT_AND_ACCEPTANCE.md` includes the wider KOALITIC GAME vision, future system responsibilities, creator workflow, terminology, roadmap, reference authority and detailed Workbench decisions. Read its broader context without treating deferred systems as current work. These two documents replace the need to import the old project's Master README, AGENTS, specifications or rejected implementation plan into the fresh project's active instructions.
+
+### Context package for the creator
+
+- Keep these two Markdown files in the new project root.
+- Attach the three Workbench images and four principal recordings listed in the product document. Their existing absolute paths are included for local access.
+- Also provide `REF_01_PLAYER_PROFILE_GOLDEN_COMPONENT_FINAL.png` if it is not accessible at the listed path; it supplies additional component direction and later final-refinement context.
+- The Nightfall chat screenshot is optional context about expectations, not an extra specification. Nightfall source is an optional read-only technical reference.
+- No old Source, Content, Config, Intermediate, Saved, executable or app-data folders are needed as starting material. Do not copy the old Markdown collection wholesale: it contains narrower and superseded instructions.
+- The original project stays available as a historical draft. Consult an old file only when a specific unresolved detail warrants it, and distinguish historical information from current instructions.
+
+The creator wants a beautiful, functional **Unreal Engine 5.8 Windows executable for configuring reusable game UI components**. This is a creator application, not a playable game or the future video editor. Normal use happens inside the executable, without Unreal Editor or Blueprint maintenance.
+
+## Current authorization and first deliverable
+
+This folder is prepared for a new implementation. When the creator starts the new chat with the launch prompt below, implement the first visual proof, package it, launch it and present it for review. Do not spend the first milestone building the whole product, another plan-only document or a low-fidelity debug application.
+
+**First deliverable: one polished Workbench screen, with one real reusable Player Profile and convincing working motion/FX.**
+
+- Open directly into Library / Preview / Inspector, following the primary Workbench reference.
+- Make the selected Player Profile look deliberately designed, with shaped surfaces, controlled glass, readable typography, portrait framing, illuminated edges and a well-composed XP bar.
+- Demonstrate coordinated entrance and exit, compact/expanded transitions, hover, disabled, ambient animation and a synthetic XP-gain reaction. The portrait, text, frame and bar belong to one coordinated component.
+- Provide useful working speed, glow/bloom appearance, glitch/artifact and ambient-intensity controls. They must visibly affect the actual result. Do not substitute tiny generic marks for the demonstrated effects.
+- Support a simple repeatable demonstration and direct interaction. Include play/pause, reset and explicit-time seeking for implemented motion. This is a component preview transport, not an episode timeline.
+- Keep the preview background dark/static. The reference videos' street footage is context, not a video-background requirement.
+- Show only working controls as active. Deferred areas may be omitted or clearly unavailable; do not fill the screen with fake components or empty promises.
+- Produce a standalone packaged Windows app that opens without Unreal Editor. Keep the complete packaged folder together; the executable is not necessarily a single self-contained file.
+
+**Stop for human visual review of this executable before expanding to the full product.** Passing compilation, automation or persistence checks does not pass this gate. Do not mark anything APPROVED or LOCKED yourself.
+
+## Working method
+
+1. Inspect the supplied images and video sequences before choosing rendering techniques. Study transitions at enough temporal detail to understand the choreography, not just static endpoints.
+2. Briefly state the intended layout and rendering approach, then implement within the authorized first milestone. Resolve ordinary engineering choices yourself.
+3. Establish the visual language and motion quality early. Package and inspect the real result, compare it directly against the references, and fix obvious discrepancies before delivery.
+4. Deliver the executable path, a current screenshot, a short demonstration of the working effects, and an honest list of limitations. Do not call the result premium merely because it has dark panels and cyan text.
+5. Wait for review. Expand functionality only after the creator accepts the visual direction.
+
+Use modular composition and shared configuration. Keep the reusable runtime component independent of the Workbench host. Do not create unnecessary frameworks before the first proof.
+
+C++, Slate, UMG, UI materials, textures and appropriate animation/effect tools are available engineering choices. Evaluate what actually achieves the visuals in a packaged runtime. Do not mandate a library by name or claim CommonUI/Niagara automatically supplies the desired look. Research current official documentation where necessary. Do not switch to a browser/Pixi app without the creator's agreement.
+
+Sound, when introduced, is existing-asset assignment and preview only. Do not add sound tuning or sound presets. The first proof does not need a fabricated audio library.
+
+## Previous attempt: rejected draft, not a starting codebase
+
+Old project: `C:/Users/Admin/Documents/KG Unreal Prototype 0.1`
+
+That project remains untouched as a recoverable draft. Do not copy its Source, Content, Config, generated assets, presets or app data into this fresh project by default. Do not delete it. Read it only for a specific diagnostic reason; it is not required context.
+
+The failed attempt built substantial controls and persistence before proving visuals. It used a newly written, simplistic procedural Slate renderer around parts of the previous project. Its basic line/rectangle effects did not meet the creator's reference quality. The problem was execution and sequencing, not the presence of Intermediate or Saved folders.
+
+The new attempt must not inherit the excuse that a provisional Player Profile can have inadequate effects. Its later final AAA refinement remains separate, but this proof must already satisfy the demonstrated minimum visual and motion quality.
+
+Keep new build output and application data isolated from the old project and `%LOCALAPPDATA%/KOALITIC/Workbench`. Choose a separate new data namespace so old drafts cannot silently populate the fresh app. No commits unless the creator requests them. Never edit `.uasset` bytes directly.
+
+## Available environment hints — verify before use
+
+- Prepared project root: `C:/Users/Admin/Documents/KOALITIC Workbench Visual Proof`
+- Previous engine installation: `E:/UnrealEngine/UE_5.8` (reported version 5.8.3).
+- Windows C++ packaging succeeded previously on this machine. Verify tools rather than reinstalling by default.
+- Nightfall technical reference: `C:/Users/Admin/Documents/Codex/2026-09-23/build-this-menu-and-top-bar`
+- Nightfall can clarify how the earlier app achieved its presentation and packaging. Do not copy its broader product, gameplay systems or layout as the Workbench design.
+
+## Launch prompt for the creator to paste
+
+> Read `00_START_HERE.md` and `01_PRODUCT_AND_ACCEPTANCE.md` in this folder. Build KOALITIC Workbench using Visual Proof First in a fresh Unreal Engine 5.8 project here. I authorize implementation of the first visual proof and packaging/launching its Windows executable. Use my attached images for the Workbench design and recordings for the component interaction and minimum effects quality. Do not reuse the rejected project's implementation. Deliver a convincing functional visual proof before expanding the full application, then stop for my review. Speak English. Do not create another long clarification interview or stop at a plan.

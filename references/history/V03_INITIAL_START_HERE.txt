@@ -1,0 +1,31 @@
+# KOALITIC — nuevo comienzo visual
+
+Esta carpeta contiene el encargo para que otra IA construya una aplicación nueva en Unreal Engine. Todavía no contiene una aplicación compilada ni un proyecto Unreal generado.
+
+La primera entrega debe ser una app Windows que se abra directamente, sin mostrar Unreal Editor: un Workbench cuidado y un Player Profile real, editable y animado. Primero validamos el resultado visual; después ampliamos la biblioteca y, mucho más adelante, el editor de episodios.
+
+## Cómo empezar
+
+Abre esta carpeta como espacio de trabajo de la otra IA y pega este mensaje:
+
+> Work in `C:/Users/Admin/Documents/KG Unreal Prototype 0.3`. Read `AGENTS.md`, `01_MASTER_PROMPT.md`, `02_PRODUCT_AND_ACCEPTANCE.md`, and `references/REFERENCE_INDEX.md`. Inspect the referenced images and videos. Implement the first visual proof described there, build and package a new standalone Unreal Windows application, launch it, and verify its visuals and interactions. Do not stop after producing a plan. Keep the existing projects untouched. Communicate with me in Spanish. Deliver the exact executable path and an easy launch shortcut, then stop for my visual review before expanding scope.
+
+## Archivos activos
+
+- [01_MASTER_PROMPT.md](01_MASTER_PROMPT.md): misión e instrucciones de ejecución, en inglés.
+- [02_PRODUCT_AND_ACCEPTANCE.md](02_PRODUCT_AND_ACCEPTANCE.md): alcance, pruebas y fases posteriores.
+- [AGENTS.md](AGENTS.md): reglas breves del espacio de trabajo.
+- [references/REFERENCE_INDEX.md](references/REFERENCE_INDEX.md): qué debe aportar cada referencia.
+- [references/NIGHTFALL_TECHNICAL_PRECEDENT.md](references/NIGHTFALL_TECHNICAL_PRECEDENT.md): dónde consultar el proyecto original que sí funcionó.
+
+`Unreal/` está reservado al nuevo proyecto; `Builds/`, a la app empaquetada; `review/`, a capturas, grabaciones y notas de verificación. La IA debe crear el proyecto real dentro de `Unreal/`.
+
+## Qué hemos corregido
+
+El encargo ya autoriza implementar y entregar una app: no incluye la antigua parada obligatoria después del plan. Tampoco acepta construir toda la infraestructura con un componente provisional y dejar el acabado visual para el final.
+
+Nightfall demuestra el tipo de entrega directa que buscamos. La imagen nueva del Workbench define la composición actual. Los vídeos muestran comportamientos editables que deben funcionar; la meta es elevar su acabado, no reproducir únicamente sus controles.
+
+Los documentos históricos son referencias, no instrucciones activas. Las copias de v0.2 se conservan como `.txt` para consultar detalles futuros sin reactivar sus reglas. Los originales no se han modificado. Las referencias copiadas están verificadas mediante SHA-256 en `references/COPY_MANIFEST.json`.
+
+La IA se encargará del código, los assets técnicos, la compilación y el lanzamiento. Tú probarás la aplicación y decidirás si su calidad visual es suficiente. No necesitas editar Blueprints ni usar Unreal Editor.

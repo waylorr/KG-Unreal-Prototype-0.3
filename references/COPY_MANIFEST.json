@@ -1,0 +1,62 @@
+[
+  {
+    "source": "C:\\Users\\Admin\\Documents\\KOALITIC GAME UI\\WIREFRAME UI\\ChatGPT Image Sep 28, 2026, 04_54_44 PM.png",
+    "copy": "references\\images\\01_WORKBENCH_PRIMARY.png",
+    "sha256": "F496F2215253423D38D30A9644B5CE2D6D60F792774B1AD4D1764AB9BBFE5C17"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Documents\\KG Unreal Prototype 0.1\\references\\visual\\REF_01_PLAYER_PROFILE_GOLDEN_COMPONENT_FINAL.png",
+    "copy": "references\\images\\02_PLAYER_PROFILE_GOLDEN.png",
+    "sha256": "7080ADB21FD7C20A5A8F40589B75CD6E95369AC13D21AE59530830809178ECBE"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Documents\\KOALITIC GAME UI\\WIREFRAME UI\\ChatGPT Image Sep 28, 2026, 12_49_29 PM.png",
+    "copy": "references\\images\\03_ARCHITECTURE_SUPPORT.png",
+    "sha256": "947920294D2B4A92ED6BFF8FB36993D45DB235DD9A6D116B38E67215E6AD9340"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Documents\\KOALITIC GAME UI\\WIREFRAME UI\\ChatGPT Image Sep 28, 2026, 12_53_57 PM.png",
+    "copy": "references\\images\\04_ARCHITECTURE_SUPPORT.png",
+    "sha256": "343F0C1526A3607A2B1935754D821DE9DF1E25A06048DB007A42D05C9DF8017D"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Downloads\\hudv2_1 (1).jpeg",
+    "copy": "references\\images\\05_ORIGINAL_HUD_CONTEXT.jpeg",
+    "sha256": "CD32B6961E7E9FEEDB8D34FD657A8218CC330C8AB5B579352ABCFE19F840D88B"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Videos\\Grabaciones de pantalla\\Grabación de pantalla 2026-09-28 113818.mp4",
+    "copy": "references\\videos\\01_THEME_MOTION_PIECES.mp4",
+    "sha256": "871740B3C6EEC448020FD32DFC05778AD9C7FF901B5F674B177117437DD4AEC3"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Videos\\Grabaciones de pantalla\\Grabación de pantalla 2026-09-28 113629.mp4",
+    "copy": "references\\videos\\02_PROFILE_STATES_XP.mp4",
+    "sha256": "BD849F8B4538E0F9B6EDB937BFE005D985153B1898893CFC14739DFEEA403E36"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Videos\\Grabaciones de pantalla\\Grabación de pantalla 2026-09-25 182138.mp4",
+    "copy": "references\\videos\\03_SYSTEM_UI_EDITOR.mp4",
+    "sha256": "71400921B419F2E930527D9DA4D93249A711E34A4D8BF3B6187673D26092FC6F"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Videos\\Grabaciones de pantalla\\Grabación de pantalla 2026-09-25 181432.mp4",
+    "copy": "references\\videos\\04_PROFILE_MOTION_CLOSEUP.mp4",
+    "sha256": "370F986D1821FDB2B6E8BF73D12043B56340C83A0E55B77D023137158198421C"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Videos\\Grabaciones de pantalla\\Grabación 2026-09-25 182142.mp4",
+    "copy": "references\\videos\\05_ADDITIONAL_EDITOR_REFERENCE.mp4",
+    "sha256": "71400921B419F2E930527D9DA4D93249A711E34A4D8BF3B6187673D26092FC6F"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Documents\\KG Unreal Prototype 0.2\\00_START_HERE.md",
+    "copy": "references\\history\\V02_START_HERE_REFERENCE_ONLY.txt",
+    "sha256": "216D2791C20C9064642392A2E22921B3F143A74B94B94FD779F72CB682E26957"
+  },
+  {
+    "source": "C:\\Users\\Admin\\Documents\\KG Unreal Prototype 0.2\\01_PRODUCT_AND_ACCEPTANCE.md",
+    "copy": "references\\history\\V02_PRODUCT_REFERENCE_ONLY.txt",
+    "sha256": "14631C117B36A9FFFECA6D43AF56A64D4FD0BE7CC0216A78217C0078E63A0BF2"
+  }
+]

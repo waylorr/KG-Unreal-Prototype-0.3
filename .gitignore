@@ -1,0 +1,29 @@
+# Packaged deliverables and verification output
+/Builds/
+/review/
+*.lnk
+
+# Unreal-generated files (keep Build/Windows/Application.ico)
+**/Binaries/
+**/Intermediate/
+**/Saved/
+**/DerivedDataCache/
+**/Build/Windows/FileOpenOrder/
+
+# Local editor and IDE state
+.vs/
+.idea/
+.vscode/
+*.sln
+*.suo
+*.VC.db
+*.VC.opendb
+*.opensdf
+*.sdf
+*.user
+*.tmp
+*.log
+
+# Python material-authoring cache
+__pycache__/
+*.py[cod]

@@ -1,0 +1,31 @@
+# Original Nightfall — read-only technical precedent
+
+The original successful implementation exists at:
+
+`C:/Users/Admin/Documents/Codex/2026-09-23/build-this-menu-and-top-bar/outputs/Koalitic`
+
+Relevant files:
+
+- `Source/Koalitic/Koalitic.cpp`
+- `Source/Koalitic/Koalitic.Build.cs`
+- `Scripts/Build.ps1`
+
+The prior packaged executable location is:
+
+`C:/Users/Admin/Documents/Codex/2026-09-23/build-this-menu-and-top-bar/outputs/KoaliticApp/Windows/Koalitic.exe`
+
+## Verified implementation observations
+
+The source uses a native Slate `SLeafWidget` interface with custom canvas drawing. Its presentation also uses image assets, including Girona and equipment artwork, and a display font. Its module includes Slate/SlateCore, ImageWrapper, RenderCore and RHI alongside engine dependencies. The game mode attaches the interface on startup.
+
+This matters because Slate itself was not the reason a later implementation looked weak. Art direction, assets, layering, timing and implementation quality matter. Do not replace visual work with a claim that choosing UMG, Slate, Niagara or a plugin automatically produces premium results.
+
+The original build script builds the editor target and invokes Unreal Automation Tool `BuildCookRun` for Win64 with build, cook, stage, pak, iostore and archive steps. It produces a standalone packaged app. Inspect the script for practical precedent, then adapt commands to the actual installed engine and the new project. Never run it unchanged if that would rebuild or overwrite the old application.
+
+An engine installation hint from the supplied documents is `E:/UnrealEngine/UE_5.8`, reported there as 5.8.3. This is a hint to verify, not an independently confirmed version guarantee.
+
+## Reuse boundaries
+
+Use the original as a read-only technical example and visual delivery precedent. Preserve its source, output and data. The new Workbench image defines the new layout. Do not import the old app wholesale, assume its source assets are final Workbench art, or inherit its writable data namespace.
+
+The new deliverable must demonstrate its own packaged launch and visuals. The existence of the prior executable is not evidence that the new build works.

@@ -1,0 +1,43 @@
+# UI Kit and live component workflow
+
+Components and UI Kit are two scopes on the same reusable Player Profile. This remains milestone 1: no episode timeline, export pipeline, extra major components or production progression.
+
+## Runtime behavior
+
+- Expanded/Compact is persistent. Ambient effects continue while the preview runs.
+- Enter and Exit are momentary preview actions. Exit briefly reaches zero visibility, then restores the selected layout without queuing another entry preset.
+- Pulse is visual only. XP events change synthetic data exactly once and trigger the number, bar, energy outline and particle burst.
+- Pause freezes the supplied presentation clock, including the UI shader. There is no visible timeline. Deterministic seeking remains available to the opt-in verification harness.
+
+## Shared resources
+
+UI Kit has Entrance, Exit, Ambient, Reactions and Style/FX categories. Each category has its own named presets. Select a saved preset to link it to the profile. Edit shared values live, then Save + link preset. Change the name before saving to create a new preset; the old preset remains in the library. The library pages after six entries.
+
+In Components, moving a motion/effect slider creates a per-value override. Reset beside the value restores its link. Reset category removes overrides only in that category. Switching a shared preset preserves local overrides. The global preview includes those overrides because it shows the actual linked profile.
+
+Save component persists profile data, category assignments and local overrides. Save preset persists the selected shared category. Unsaved shared edits are drafts, not silently written by Save component. Synthetic rewards, pause time and transient reactions are excluded.
+
+Storage: `%LOCALAPPDATA%/KOALITIC/WorkbenchV03/Presentation.ini` and `UIKit.ini`. Verification uses a separate `VerificationKit` child directory. Old `MotionPresets.ini` is preserved but the new category library uses `UIKit.ini`.
+
+## Rendering and source
+
+- `PlayerProfile.h`: native editable layers, state/visibility evaluation, XP, text decoding, perimeter energy and burst particles.
+- `KitParameters.h`: parameter registry used by the inspector, shared presets and local inheritance.
+- `WorkbenchKit.inl`: library storage and material parameter updates.
+- `WorkbenchView.inl`: application shell and controls, separate from the component renderer.
+- `Scripts/ProfileGlass.hlsl`: UI-domain glass reflection, procedural particles, edge energy and reaction ring. All animation receives Clock from the preview.
+- `Scripts/CreateInterfaceMaterial.py`: regenerates `/Game/InterfaceMaterials/M_ProfileGlass` through supported Unreal editor APIs. The editable material asset is also retained.
+- `Scripts/Build.ps1`: builds editor target, regenerates material, builds/cooks/packages Win64.
+
+Glow is explicitly composed inside the UI renderer; it is not scene post-process bloom. Procedural particles are native UI shader/geometry particles, not a Niagara simulation. Both work with Slate clipping and deterministic pause. The portrait is sampled from the supplied reference; other component layers remain independently drawn.
+
+## Technology research, 2026-09-28
+
+Installed engine: Unreal 5.8.3. Common UI is installed and supplies reusable widgets/navigation/input conventions; it does not supply an art-directed visual effects package. Epic supports User Interface materials for UMG and Slate. We use that rendering path for the component.
+
+- [Epic: Common UI overview](https://dev.epicgames.com/documentation/unreal-engine/overview-of-advanced-multiplatform-user-interfaces-with-common-ui-for-unreal-engine)
+- [Epic: material domains](https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-material-properties)
+- [Epic: Niagara UI Renderer](https://dev.epicgames.com/documentation/unreal-engine/API/Plugins/NiagaraUIRenderer)
+- [External Niagara UI Renderer source](https://github.com/SourySK/NiagaraUIRenderer)
+
+The installed engine includes its own NiagaraUIRenderer plugin, marked experimental in its local descriptor. Its public widget uses a Niagara CPU UI component. It is not enabled for this build: the current material and geometric particle path is smaller and controllable from the same clock. No third-party plugin was installed or purchased. PythonScriptPlugin and EditorScriptingUtilities are existing engine tools enabled for editor asset generation, not required for the packaged runtime.
