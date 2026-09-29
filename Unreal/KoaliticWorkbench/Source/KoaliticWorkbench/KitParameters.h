@@ -3,11 +3,11 @@
 namespace KW {
 struct KitParameter {const TCHAR* Key;const TCHAR* Label;int Category;float Min,Max;bool Choice;};
 inline const KitParameter Params[]={
- {TEXT("Entrance"),TEXT("Entrance choreography"),0,0.0f,4.0f,true},
+ {TEXT("Entrance"),TEXT("Entrance choreography"),0,0.0f,7.0f,true},
  {TEXT("Duration"),TEXT("Entrance duration"),0,0.15f,6.0f,false},
  {TEXT("Stagger"),TEXT("Layer stagger"),0,0.0f,0.35f,false},
  {TEXT("Direction"),TEXT("Reveal direction"),0,0.0f,1.0f,true},
- {TEXT("Exit"),TEXT("Exit choreography"),1,0.0f,4.0f,true},
+ {TEXT("Exit"),TEXT("Exit choreography"),1,0.0f,7.0f,true},
  {TEXT("ExitDuration"),TEXT("Exit duration"),1,0.15f,6.0f,false},
  {TEXT("Ambient"),TEXT("Ambient enabled"),2,0.0f,1.0f,true},
  {TEXT("AmbientStrength"),TEXT("Ambient intensity"),2,0.0f,3.0f,false},
@@ -39,13 +39,64 @@ inline const KitParameter Params[]={
  {TEXT("EnterEase"),TEXT("Entrance easing power"),0,1.f,6.f,false},
  {TEXT("ExitEase"),TEXT("Exit easing power"),1,1.f,6.f,false},
  {TEXT("BarTip"),TEXT("Fill tip angle"),5,0.f,1.f,false},
+ {TEXT("EntrySpread"),TEXT("Entrance displacement"),0,0.f,3.f,false},
+ {TEXT("ExitSpread"),TEXT("Exit fragmentation"),1,0.f,3.f,false},
+ {TEXT("EntryTrail"),TEXT("Entrance edge trail"),0,0.f,3.f,false},
+ {TEXT("ExitTrail"),TEXT("Exit edge trail"),1,0.f,3.f,false},
+ {TEXT("GlassSpeed"),TEXT("Glass sweep speed / reverse"),2,-4.f,6.f,false},
+ {TEXT("ParticleSpeed"),TEXT("Particle speed / reverse"),2,-4.f,6.f,false},
+ {TEXT("TextSpeed"),TEXT("Text interference speed"),2,0.f,6.f,false},
+ {TEXT("PerimeterSpeed"),TEXT("Perimeter flow speed / reverse"),2,-4.f,6.f,false},
+ {TEXT("ParallaxDepth"),TEXT("Layer parallax depth"),2,0.f,3.f,false},
+ {TEXT("EntryBloom"),TEXT("Entrance bloom pulse"),0,0.f,4.f,false},
+ {TEXT("EntryParticles"),TEXT("Entrance particle sparks"),0,0.f,3.f,false},
+ {TEXT("EntryGlitch"),TEXT("Entrance whole-profile glitch"),0,0.f,3.f,false},
+ {TEXT("ExitBloom"),TEXT("Exit bloom pulse"),1,0.f,4.f,false},
+ {TEXT("ExitParticles"),TEXT("Exit particle sparks"),1,0.f,3.f,false},
+ {TEXT("ExitGlitch"),TEXT("Exit whole-profile glitch"),1,0.f,3.f,false},
+ {TEXT("ThemeCustom"),TEXT("Custom color palette"),4,0.f,1.f,true},
+ {TEXT("ThemeOpacity"),TEXT("Whole component opacity"),4,0.f,1.f,false},
+ {TEXT("FrameHue"),TEXT("Frame hue"),4,0.f,360.f,false},
+ {TEXT("FrameSaturation"),TEXT("Frame saturation"),4,0.f,1.f,false},
+ {TEXT("FrameBrightness"),TEXT("Frame brightness"),4,0.f,2.f,false},
+ {TEXT("FrameOpacity"),TEXT("Frame opacity"),4,0.f,1.f,false},
+ {TEXT("TextHue"),TEXT("Text hue"),4,0.f,360.f,false},
+ {TEXT("TextSaturation"),TEXT("Text saturation"),4,0.f,1.f,false},
+ {TEXT("TextBrightness"),TEXT("Text brightness"),4,0.f,2.f,false},
+ {TEXT("TextOpacity"),TEXT("Text opacity"),4,0.f,1.f,false},
+ {TEXT("GlassHue"),TEXT("Glass hue"),4,0.f,360.f,false},
+ {TEXT("GlassSaturation"),TEXT("Glass saturation"),4,0.f,1.f,false},
+ {TEXT("GlassBrightness"),TEXT("Glass brightness"),4,0.f,2.f,false},
+ {TEXT("GlassOpacity"),TEXT("Glass opacity"),4,0.f,1.f,false},
+ {TEXT("AccentHue"),TEXT("Accent hue"),4,0.f,360.f,false},
+ {TEXT("AccentSaturation"),TEXT("Accent saturation"),4,0.f,1.f,false},
+ {TEXT("AccentBrightness"),TEXT("Accent brightness"),4,0.f,2.f,false},
+ {TEXT("AccentOpacity"),TEXT("Accent opacity"),4,0.f,1.f,false},
+ {TEXT("ProgressHue"),TEXT("XP fill hue"),4,0.f,360.f,false},
+ {TEXT("ProgressSaturation"),TEXT("XP fill saturation"),4,0.f,1.f,false},
+ {TEXT("ProgressBrightness"),TEXT("XP fill brightness"),4,0.f,2.f,false},
+ {TEXT("ProgressOpacity"),TEXT("XP fill opacity"),4,0.f,1.f,false},
+ {TEXT("LevelHue"),TEXT("Level hue"),4,0.f,360.f,false},
+ {TEXT("LevelSaturation"),TEXT("Level saturation"),4,0.f,1.f,false},
+ {TEXT("LevelBrightness"),TEXT("Level brightness"),4,0.f,2.f,false},
+ {TEXT("LevelOpacity"),TEXT("Level opacity"),4,0.f,1.f,false},
+ {TEXT("EventIntensity"),TEXT("XP event glow"),6,0.f,4.f,false},
+ {TEXT("EventDuration"),TEXT("XP event duration"),6,.15f,5.f,false},
+ {TEXT("EventBurst"),TEXT("XP event particles"),6,0.f,4.f,false},
+ {TEXT("PopupScale"),TEXT("Popup text scale"),6,.5f,2.5f,false},
+ {TEXT("PopupRise"),TEXT("Popup rise distance"),6,0.f,3.f,false},
+ {TEXT("PopupOpacity"),TEXT("Popup opacity"),6,0.f,1.f,false},
+ {TEXT("BarKick"),TEXT("XP bar impact"),6,0.f,2.f,false},
+ {TEXT("LevelFlash"),TEXT("Level-up flash"),6,0.f,4.f,false},
+ {TEXT("LevelParticles"),TEXT("Level-up particles"),6,0.f,4.f,false},
 };
 inline constexpr int ParamCount=UE_ARRAY_COUNT(Params);
-inline const TCHAR* CategoryName(int C){const TCHAR* Names[]={TEXT("Entrance"),TEXT("Exit"),TEXT("Ambient FX"),TEXT("Reaction FX"),TEXT("Appearance"),TEXT("Progress Bar")};return Names[FMath::Clamp(C,0,5)];}
-inline float GetParam(const Presentation& P,int I){switch(I){case 0:return P.Entrance;case 1:return P.Duration;case 2:return P.Stagger;case 3:return P.Direction;case 4:return P.Exit;case 5:return P.ExitDuration;case 6:return P.Ambient;case 7:return P.AmbientStrength;case 8:return P.Speed;case 9:return P.Sweep;case 10:return P.Particles;case 11:return P.TextNoise;case 12:return P.AmbientMode;case 13:return P.Reaction;case 14:return P.ReactionDuration;case 15:return P.Burst;case 16:return P.Glow;case 17:return P.Glitch;case 18:return P.Frequency;case 19:return P.Accent;case 20:return P.Perimeter;case 21:return P.Scan;case 22:return P.GlitchBands;case 23:return P.GlitchDuration;case 24:return P.GlitchOffset;case 25:return P.Design;case 26:return P.Ornaments;case 27:return P.BarHeight;case 28:return P.BarInset;case 29:return P.BarGlow;case 30:return P.BarSpeed;case 31:return P.ParticleSize;case 32:return P.ParticleDrift;case 33:return P.EnterEase;case 34:return P.ExitEase;case 35:return P.BarTip;default:return 0;}}
-inline void SetParam(Presentation& P,int I,float V){if(!FMath::IsFinite(V))return;V=FMath::Clamp(V,Params[I].Min,Params[I].Max);switch(I){case 0:P.Entrance=FMath::RoundToInt(V);break;case 1:P.Duration=V;break;case 2:P.Stagger=V;break;case 3:P.Direction=FMath::RoundToInt(V);break;case 4:P.Exit=FMath::RoundToInt(V);break;case 5:P.ExitDuration=V;break;case 6:P.Ambient=FMath::RoundToInt(V);break;case 7:P.AmbientStrength=V;break;case 8:P.Speed=V;break;case 9:P.Sweep=V;break;case 10:P.Particles=V;break;case 11:P.TextNoise=V;break;case 12:P.AmbientMode=FMath::RoundToInt(V);break;case 13:P.Reaction=V;break;case 14:P.ReactionDuration=V;break;case 15:P.Burst=V;break;case 16:P.Glow=V;break;case 17:P.Glitch=V;break;case 18:P.Frequency=V;break;case 19:P.Accent=FMath::RoundToInt(V);break;case 20:P.Perimeter=V;break;case 21:P.Scan=V;break;case 22:P.GlitchBands=FMath::RoundToInt(V);break;case 23:P.GlitchDuration=V;break;case 24:P.GlitchOffset=V;break;case 25:P.Design=FMath::RoundToInt(V);break;case 26:P.Ornaments=FMath::RoundToInt(V);break;case 27:P.BarHeight=V;break;case 28:P.BarInset=V;break;case 29:P.BarGlow=V;break;case 30:P.BarSpeed=V;break;case 31:P.ParticleSize=V;break;case 32:P.ParticleDrift=V;break;case 33:P.EnterEase=V;break;case 34:P.ExitEase=V;break;case 35:P.BarTip=V;break;}}
-inline FString ParamValue(const Presentation& P,int I){int V=FMath::RoundToInt(GetParam(P,I));
- if(I==0){const TCHAR* N[]={TEXT("Frame construct"),TEXT("Vector deploy"),TEXT("Segment assembly"),TEXT("Signal decode"),TEXT("Cascade deploy")};return N[FMath::Clamp(V,0,4)];}
- if(I==4){const TCHAR* N[]={TEXT("Shutter retract"),TEXT("Collapse to line"),TEXT("Fragment disperse"),TEXT("Signal dropout"),TEXT("Cascade retract")};return N[FMath::Clamp(V,0,4)];}
+inline const TCHAR* CategoryName(int C){const TCHAR* Names[]={TEXT("Entrance"),TEXT("Exit"),TEXT("Ambient FX"),TEXT("Reaction FX"),TEXT("Theme"),TEXT("XP Bar"),TEXT("Event FX")};return Names[FMath::Clamp(C,0,6)];}
+inline FLinearColor CategoryColor(int C){switch(C){case 0:case 1:return FLinearColor(.68f,.34f,1.f);case 2:return FLinearColor(.16f,.94f,.55f);case 3:return FLinearColor(1.f,.22f,.3f);case 6:return FLinearColor(1.f,.68f,.2f);default:return Cyan;}}
+inline float GetParam(const Presentation& P,int I){if(I>=EffectExtraBase&&I<ParamCount)return P.Extra[I-EffectExtraBase];switch(I){case 0:return P.Entrance;case 1:return P.Duration;case 2:return P.Stagger;case 3:return P.Direction;case 4:return P.Exit;case 5:return P.ExitDuration;case 6:return P.Ambient;case 7:return P.AmbientStrength;case 8:return P.Speed;case 9:return P.Sweep;case 10:return P.Particles;case 11:return P.TextNoise;case 12:return P.AmbientMode;case 13:return P.Reaction;case 14:return P.ReactionDuration;case 15:return P.Burst;case 16:return P.Glow;case 17:return P.Glitch;case 18:return P.Frequency;case 19:return P.Accent;case 20:return P.Perimeter;case 21:return P.Scan;case 22:return P.GlitchBands;case 23:return P.GlitchDuration;case 24:return P.GlitchOffset;case 25:return P.Design;case 26:return P.Ornaments;case 27:return P.BarHeight;case 28:return P.BarInset;case 29:return P.BarGlow;case 30:return P.BarSpeed;case 31:return P.ParticleSize;case 32:return P.ParticleDrift;case 33:return P.EnterEase;case 34:return P.ExitEase;case 35:return P.BarTip;case 36:return P.EntrySpread;case 37:return P.ExitSpread;case 38:return P.EntryTrail;case 39:return P.ExitTrail;default:return 0;}}
+inline void SetParam(Presentation& P,int I,float V){if(!FMath::IsFinite(V)||I<0||I>=ParamCount)return;V=FMath::Clamp(V,Params[I].Min,Params[I].Max);if(I>=EffectExtraBase){P.Extra[I-EffectExtraBase]=V;return;}switch(I){case 0:P.Entrance=FMath::RoundToInt(V);break;case 1:P.Duration=V;break;case 2:P.Stagger=V;break;case 3:P.Direction=FMath::RoundToInt(V);break;case 4:P.Exit=FMath::RoundToInt(V);break;case 5:P.ExitDuration=V;break;case 6:P.Ambient=FMath::RoundToInt(V);break;case 7:P.AmbientStrength=V;break;case 8:P.Speed=V;break;case 9:P.Sweep=V;break;case 10:P.Particles=V;break;case 11:P.TextNoise=V;break;case 12:P.AmbientMode=FMath::RoundToInt(V);break;case 13:P.Reaction=V;break;case 14:P.ReactionDuration=V;break;case 15:P.Burst=V;break;case 16:P.Glow=V;break;case 17:P.Glitch=V;break;case 18:P.Frequency=V;break;case 19:P.Accent=FMath::RoundToInt(V);break;case 20:P.Perimeter=V;break;case 21:P.Scan=V;break;case 22:P.GlitchBands=FMath::RoundToInt(V);break;case 23:P.GlitchDuration=V;break;case 24:P.GlitchOffset=V;break;case 25:P.Design=FMath::RoundToInt(V);break;case 26:P.Ornaments=FMath::RoundToInt(V);break;case 27:P.BarHeight=V;break;case 28:P.BarInset=V;break;case 29:P.BarGlow=V;break;case 30:P.BarSpeed=V;break;case 31:P.ParticleSize=V;break;case 32:P.ParticleDrift=V;break;case 33:P.EnterEase=V;break;case 34:P.ExitEase=V;break;case 35:P.BarTip=V;break;case 36:P.EntrySpread=V;break;case 37:P.ExitSpread=V;break;case 38:P.EntryTrail=V;break;case 39:P.ExitTrail=V;break;}}
+inline FString ParamValue(const Presentation& P,int I){int V=FMath::RoundToInt(GetParam(P,I));if(I>=EffectExtraBase){if(I==EffectExtraBase+ThemeCustom)return V?TEXT("On"):TEXT("Off");return FString::Printf(TEXT("%.2f%s"),GetParam(P,I),(I==EffectExtraBase+EventDuration)?TEXT(" s"):TEXT(""));}
+ if(I==0){const TCHAR* N[]={TEXT("Frame construct"),TEXT("Vector deploy"),TEXT("Segment assembly"),TEXT("Signal decode"),TEXT("Cascade deploy"),TEXT("Prism aperture"),TEXT("Holo lattice"),TEXT("Phase materialize")};return N[FMath::Clamp(V,0,7)];}
+ if(I==4){const TCHAR* N[]={TEXT("Shutter retract"),TEXT("Collapse to line"),TEXT("Fragment disperse"),TEXT("Signal dropout"),TEXT("Cascade retract"),TEXT("Prism collapse"),TEXT("Holo dissolve"),TEXT("Phase evacuate")};return N[FMath::Clamp(V,0,7)];}
  if(I==3)return V?TEXT("Right to left"):TEXT("Left to right");if(I==6||I==26)return V?TEXT("On"):TEXT("Off");if(I==12)return V?TEXT("Holographic scan"):TEXT("Obsidian glass");if(I==19)return V==0?TEXT("Signal red"):V==1?TEXT("Ion cyan"):TEXT("Ultraviolet");if(I==25)return V?TEXT("Precision / V2"):TEXT("Angular / V1");return FString::Printf(TEXT("%.2f%s"),GetParam(P,I),(I==1||I==5||I==14||I==23)?TEXT(" s"):I==18?TEXT(" Hz"):I==8||I==30?TEXT(" x"):I==24?TEXT(" px"):TEXT(""));}
 }

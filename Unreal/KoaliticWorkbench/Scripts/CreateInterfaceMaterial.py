@@ -13,7 +13,7 @@ material.set_editor_property('blend_mode', unreal.BlendMode.BLEND_TRANSLUCENT)
 custom = lib.create_material_expression(material, unreal.MaterialExpressionCustom, 0, 0)
 custom.set_editor_property('code', Path(__file__).with_name('ProfileGlass.hlsl').read_text())
 custom.set_editor_property('output_type', unreal.CustomMaterialOutputType.CMOT_FLOAT4)
-names = ['UV', 'Clock', 'Strength', 'Speed', 'Sweep', 'Particles', 'Glow', 'Reaction', 'Compact', 'Mode', 'Scan', 'Design', 'ParticleSize', 'ParticleDrift', 'Perimeter']
+names = ['UV', 'Clock', 'Strength', 'Speed', 'Sweep', 'Particles', 'Glow', 'Reaction', 'Compact', 'Mode', 'Scan', 'Design', 'ParticleSize', 'ParticleDrift', 'Perimeter', 'GlassSpeed', 'ParticleSpeed', 'PerimeterSpeed']
 inputs = []
 for name in names:
     entry = unreal.CustomInput()
@@ -25,7 +25,7 @@ lib.connect_material_expressions(uv, '', custom, 'UV')
 for i, name in enumerate(names[1:]):
     param = lib.create_material_expression(material, unreal.MaterialExpressionScalarParameter, -500, 100 + i*80)
     param.set_editor_property('parameter_name', name)
-    param.set_editor_property('default_value', {'Strength': .7, 'Speed': 1., 'Sweep': .7, 'Particles': .6, 'Glow': .9}.get(name, 0.))
+    param.set_editor_property('default_value', {'Strength': .7, 'Speed': 1., 'Sweep': .7, 'Particles': .6, 'Glow': .9, 'GlassSpeed': 1., 'ParticleSpeed': 1., 'PerimeterSpeed': 1.}.get(name, 0.))
     lib.connect_material_expressions(param, '', custom, name)
 rgb = lib.create_material_expression(material, unreal.MaterialExpressionComponentMask, 400, 0)
 rgb.set_editor_property('r', True)
